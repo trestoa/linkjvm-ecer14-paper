@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  LaTeX template for Junior Journal article
+%%%  Please don't change next few lines
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{juniorjournal}
+%\setcounter{page}{}
+%\journaltitle{}
+%\volume{}
+%\pubyear{}
+%\licensee{}
+%\authorlist{}
+%\doi{}
+%\articlenumber{}
+%\articletype{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 
+%%%  List custom packages below, if needed. 
+%%%  Note that amsfonts,amstext,amssymb,amsmath,amsthm,amscd
+%%%  bm,paralist,color,graphicx,array and subfigure packages
+%%%  are all part of juniorjournal.cls
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+basicstyle=\ttfamily,
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  Journal article basic info.
+%%%  List all authors first and then their affiliations. 
+%%%  Link author and affiliations with numbers in optional arguments.
+%%%  For corresponding author use the form given below.
+%%%  
+%%%  For example:
+%%%  \author[1]{Name1 Surname1}
+%%%  \author[2, \corresp]{Name2 Surname2}\correspemail{email@edu.com}
+%%%  \affil[1]{Institute1, Country1}
+%%%  \affil[2]{Institute2, Country2}
+%%%  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\articletitle{Hacking the KIPR Link} % To break lines in long titles use \\
+
+%\author[ ,\corresp]{}\correspemail{}
+\author[1, \corresp]{Markus Klein}\correspemail{m@mklein.co.at}
+\author[1]{Christoph Hackenberger}
+\author[1]{Melanie Goebel}
+\author[1]{Klaus Ableitinger}
+\affil[1]{Vienna Institute of Technology}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  Main document.
+%%%
+%%%  To span floating objects (wide images, tables, etc.)
+%%%  over twocolumn layout, use figure* 
+%%%  or table* environments.
+%%%
+%%%  Examples:
+%%%  \begin{figure*}	 \begin{table*}		
+%%%   ...				  ...				
+%%%  \end{figure*}		 \end{table*}		
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\maketitle
+
+\articleabstract{}
+\keywords{}
+
+\section{Introduction}
+\lstinputlisting[language=Java]{listings/Debugger.java}
+
+\begin{thebibliography}{500} % Include .bib (.bbl) references here
+
+\end{thebibliography}
+
+\end{document}
