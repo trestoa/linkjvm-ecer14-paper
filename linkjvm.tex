@@ -91,37 +91,38 @@ showstringspaces=false}
 \keywords{}
 
 \section{Introduction}
-The purpose of Botball is to motivate students for building and programming autonomous
-robots. Most new students to Botball do not have any experience with programming.
-Therefore the way of developing the robot software has to be very beginner friendly and easy
-to use, but at the same time very powerful.
+The purpose of Botball is to motivate students for building and programming autonomous robots.
+Most new students to Botball do not have any experience with programming.
+Therefore the way of developing the robot software has to be very beginner friendly and easy to use, but at the same time very powerful.
 
-So what is the best language for Botball? I do not think there is a best choice. Every language
-has its own advantages and disadvantages. C for example is a very powerful fast and
-processor-near language so it is quite good for a robot controller doing a lot of basic things
-such as controlling servos and motors, reading sensor values and so on. But for students who
-have not yet learned anything about programming or how a computer works, it would be very
-hard to learn and understand C code. If you want to develop a complex C program, you have
-to know how pointer arithmetic and memory access works.
+So what is the best language for Botball?
+I do not think there is a best choice.
+Every language has its own advantages and disadvantages.
+C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
+But for students who have not yet learned anything about programming or how a computer works, it would be very hard to learn and understand C code. 
+If you want to develop a complex C program, you have to know how pointer arithmetic and memory access works.
 
-Another well-known possibility is Java. Java is much easier to learn and also pretty
-powerful and reliable. Of course it is not as fast as compiled languages such as C or C++, but
-in the most cases it will make no real difference. Java is better for beginners, compared to C it
-doesn’t require special knowledge about how a computer works. Java is a higher level
-language. It provides automatic garbage collection to handle memory management and offers
-an excellent set of basic data structures such as lists, queues and maps. In C everything has to
-be built from scratch. The object-oriented paradigm is also very helpful to structure the
-program to improve the maintainability.
+Another well-known possibility is Java. 
+Java is much easier to learn and also pretty powerful and reliable.
+Of course it is not as fast as compiled languages such as C or C++, but in the most cases it will make no real difference.
+Java is better for beginners, compared to C it does not require special knowledge about how a computer works.
+Java is a higher level language.
+It provides automatic garbage collection to handle memory management and offers an excellent set of basic data structures such as lists, queues and maps.
+In C everything has to be built from scratch.
+The object-oriented paradigm is also very helpful to structure the program to improve the maintainability.
 
-In most schools in Austria students, like me, get started with programming using Java and not
-C or C++. Therefore I would consider myself a good Java programmer, but I never wrote a
-bigger project using C
+In most schools in Austria students, like me, get started with programming using Java and not C or C++.
+Therefore I would consider myself a good Java programmer, but I never wrote a bigger project using C.
 
-Further alternatives are event-based frameworks using a scripting language such as node
-or in general scripting languages, but these can be implemented very easily, because the JVM
-(Java Virtual Machine) supports a huge amount of additional languages including
-javascript, scala and clojure.
+Further alternatives are event-based frameworks using a scripting language such as node or in general scripting languages, but these can be implemented very easily, because the JVM(Java Virtual Machine) supports a huge amount of additional languages including javascript, scala and clojure.
 %\lstinputlisting[language=Java]{listings/Debugger.java}
+
+\section{State of the Art}
+The JamVM which is currently preinstalled on the KIPR Link is not working.
+I do not know why this version does not work yet.
+If I try to run a program, the VM outputs “segmentation fault” and stops.
+Unfortunately there is also no javac java compiler, which is working out-of-the-box.
+So an alternative Java Runtime Environment (JRE) had to be installed to get the java compiler running.
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 
