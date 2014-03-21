@@ -125,23 +125,6 @@ Unfortunately there is also no javac java compiler, which is working out-of-the-
 So an alternative Java Runtime Environment (JRE) had to be installed to get the java compiler running.
 
 \section{Design Approach}
-My goal is to provide a Java-Framework which is:
-\begin{itemize}
-	\item reliable: using a stable Java VM
-	\item fast: wrapping the native libkovan for accessing the robot functions
-	\item easy to learn and to use
-	\item object oriented
-\end{itemize}
-The approach is based on wrapping the existing native libkovan with Java using the Java Native Interface. 
-This is basically the same as the CBCJVM which is the Java implementation for the CBCv2.
-The CBCJVM also wraps over the libcbc.
-In this approach the actual implementations are written in C and do not have to be implemented newly.
-See Figure 1 for a detailed overview of the whole framework.
-
-[figure]
-
-All parts of the framework are described in detail one by one in the following subsections.
-
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 
 \end{thebibliography}
