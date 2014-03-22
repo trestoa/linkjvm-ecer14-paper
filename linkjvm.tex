@@ -195,8 +195,16 @@ LinkJVM API:
 
 \subsection{Drive until Bump}
 \lstinputlisting[language=Java]{listings/drive_until_bump.java}
+The example above shows a very simple program, which let to motor drive forward 
+until a digital sensor which is used as bump sensor bumps.
 
-\subsection{Line Following}
+\newpage
+\subsection{Create Room-Tour}
+\lstinputlisting[language=Java]{listings/create_roomtour.java}
+With this code it is possible to do a room tour with the iRobot Create.
+After the start button was pressed the Create starts moving until it bumps, then 
+it turns and moves on in another direction. The program runs until the side 
+button on the KIPR Link is pressed.
 
 \subsection{Vision System}
 The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
