@@ -130,6 +130,7 @@ including javascript, scala and clojure.
 
 \section{State of the Art}
 LinkJVM 1.0 was published at the Global Conference on Educational Robotics 2013 (GCER 2013).
+While the Java environment JamVM and GNU Classpath work pretty well the robot library is not that good.
 At that time LinkJVM 1.0 wraps over libkovan's C bindings which makes the libary structure pretty poor, because LinkJVM first calls the native C function and then the native C function manages the C++ objects.
 Is approach is in easier to implement, but it also comes with some downsides.
 The most important of them is that there no possibility to write a thread save library using this approach, because libkovan itself is not thread-save.
