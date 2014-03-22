@@ -190,13 +190,18 @@ What libraries does LinkJVM offer to the user?
 LinkJVM does support motors, servos, digital and analog sensors, hardware and 
 software buttons, vision system, iRobot Create, AR.Drone 1.0/2.0.
 
+\subsection{Botball Class}
+The Botball Class contains some basically static methods like shutDownIn, 
+waitForLight or msleep.
+The next example shows the usage of these methods:
+\lstinputlisting[language=Java]{listings/botball_class.java}
+
 \subsection{Motors/Servos and Sensors}
 The following lines of code listing shows the usage of motors and sensors:
 \lstinputlisting[language=Java]{listings/drive_until_bump.java}
 The example above shows a very simple program, which let to motor drive forward 
 until a digital sensor which is used as bump sensor bumps.
 
-\newpage
 \subsection{Create}
 The iRobot Create is a very good example to show the advantage of the usage of 
 an object oriented programming language like Java.
