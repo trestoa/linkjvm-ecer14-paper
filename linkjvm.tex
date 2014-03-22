@@ -199,13 +199,19 @@ LinkJVM API:
 \subsection{Line Following}
 
 \subsection{Vision System}
-The LinkJVM's vision system consists basically of 3 major classes.
+The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
+\begin{itemize}
+	\item {\bf ImageProcessor}: The ImageProcessor processes the image to color or QR blobs with a given CameraConfig and a given channel number and proviedes afterward the CameraObjects. 
+	\item {\bf CameraObject}: One CameraObject represents an object tracked by an image processor. It contains information like the bounding box or the center point about the blob.
+	\item {\bf CameraConfig}: An CameraConfig object contains several configuration attribute for an ImageProcessor.
+\end{itemize}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{images/vision.pdf}
 \caption{Overview over LinkJVM's Vision System}
 \label{fig:Vision-System}
 \end{figure}
+
 
 \section{Java Environment}
 LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the java core classes.
