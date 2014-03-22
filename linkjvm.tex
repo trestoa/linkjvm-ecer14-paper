@@ -26,6 +26,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{listings}
+\usepackage{hyperref}
 
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
@@ -138,6 +139,7 @@ Moreover LinkJVM 1.0 offers only a very small API with much less features that l
 Therefor the authors decided to write a new library from scratch which will fix all this issues. 
 
 \section{Design Approach}
+\label{sec:design-approach}
 The framework of the LinkJVM consists of one high and one low level part.
 The low level part of the LinkJVM wraps the existing C++ library of libkovan, 
 the high level now wraps the low level part and represents the API for the user.
@@ -168,7 +170,20 @@ servo,... , which will all uses the same low level object with the specified
 unique identifier, which is for example the port of a sensor. If the user 
 creates a new high level object with a unique identifier that is unequal to 
 an existing low level object the appropriate factory would 
-create a new low level object with the specified unique identifier. (see Figue \ref{fig:Object-Diagram})
+create a new low level object with the specified unique identifier. (see figure \ref{fig:Object-Diagram})
+
+Both the low and the high level parts are described in detail in the following subsections:
+
+\subsection{Low Level}
+The low level part of the framework contains the java side libkovan wrapper. 
+Every object of a low level class is also a native c++ object.
+This classes must be instanciated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
+The low level part also provieds the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
+
+\subsection{High Level}
+The high level part contains, as already mentioned before, the API for the user. 
+Internally every time the user creates a new high level object, the high object requests a new low object.
+See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram} for more details.
 \section{Java Environment}
 LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the java core classes.
 Moreover it also offeres a Java compiler(javac) for compiling java source code as well as jar for packaging compiled class files.
