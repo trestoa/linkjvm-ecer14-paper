@@ -1,0 +1,8 @@
+- Abstract
+- Introduction
+- Design -> Christoph
+	- General Approach
+- Java Environment -> Markus
+	- JamVM
+	- Classpath
+- Integration into Link's build system -> Markus
