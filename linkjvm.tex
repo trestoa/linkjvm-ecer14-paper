@@ -189,6 +189,38 @@ LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight
 Moreover it also offeres a Java compiler(javac) for compiling java source code as well as jar for packaging compiled class files.
 \subsection{JamVM}
 
+\section{Developing Tools}
+Because the code the user writes with the LinkJVM library uses the programming 
+language Java, it is not possible to use the KISS IDE from KIPR because it only 
+supports C or C++ code.
+
+The authors decided to leave the choice of how to write the code at the user. It 
+is possible to write the code with an IDE like Eclipse or Netbeans or just write 
+it in a simple text editor and compile the source code over the console.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{images/linkjvm_uploader.jpg}
+\caption{LinkJVM-Uploader}
+\label{fig:linkjvm_uploader}
+\end{figure}
+
+At the beginning it was only possible to upload/run you program via scp/ssh to/on the KIPR Link.
+Running a program over ssh is not tournament-conformal, so the only thing that could be done 
+was to write a C wrapper, which executes your java program.
+
+So the next logical thing the authors have to think about is how to get the compiled 
+program on the KIPR Link and make it run able there in a for the user easy way?
+They first thinked about a plugin for the Eclipse IDE but this would extremely 
+limit the user of how to write the code, which like already mentioned the 
+authors wanted to leave the choice at the user.
+The authors decided to write independent program, which is called 
+LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}), 
+to upload .jar files to the link. This program also automatically creates C 
+wrappers, which executes the .jar files and which are shown in the menu point 
+'Programs' on the KIPR Link. All this is done over ssh and scp connections in 
+the background.
+
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 
 \end{thebibliography}
