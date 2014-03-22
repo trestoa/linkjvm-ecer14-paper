@@ -6,3 +6,5 @@
 	- JamVM
 	- Classpath
 - Integration into Link's build system -> Markus
+- LinkJVM depolyment
+- Developing Tools (LinkJVM-Uploader)
