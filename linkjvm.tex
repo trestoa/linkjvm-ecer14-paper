@@ -91,34 +91,77 @@ showstringspaces=false}
 \section{Introduction}
 The purpose of Botball is to motivate students for building and programming autonomous robots.
 Most new students to Botball do not have any experience with programming.
-Therefore the way of developing the robot software has to be very beginner friendly and easy to use, but at the same time very powerful.
+Therefore the way of developing the robot software has to be very beginner friendly and easy to use, 
+but at the same time very powerful.
 
 So what is the best language for Botball?
-I do not think there is a best choice.
+The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
-C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
-But for students who have not yet learned anything about programming or how a computer works, it would be very hard to learn and understand C code. 
-If you want to develop a complex C program, you have to know how pointer arithmetic and memory access works.
+C for example is a very powerful fast and processor-near language so it is quite good for a robot 
+controller doing a lot of basic things such as controlling servos and motors, reading sensor values 
+and so on. 
+But for students who have not yet learned anything about programming or how a computer works, 
+it would be very hard to learn and understand C code. 
+If you want to develop a complex C program, you have to know how pointer arithmetic and memory 
+access works.
 
 Another well-known possibility is Java. 
 Java is much easier to learn and also pretty powerful and reliable.
-Of course it is not as fast as compiled languages such as C or C++, but in the most cases it will make no real difference.
-Java is better for beginners, compared to C it does not require special knowledge about how a computer works.
+Of course it is not as fast as compiled languages such as C or C++, 
+but in the most cases it will make no real difference.
+Java is better for beginners, 
+compared to C it does not require special knowledge about how a computer works.
 Java is a higher level language.
-It provides automatic garbage collection to handle memory management and offers an excellent set of basic data structures such as lists, queues and maps.
+It provides automatic garbage collection to handle memory management 
+and offers an excellent set of basic data structures such as lists, queues and maps.
 In C everything has to be built from scratch.
-The object-oriented paradigm is also very helpful to structure the program to improve the maintainability.
+The object-oriented paradigm is also very helpful to structure the program 
+to improve the maintainability.
 
-In most schools in Austria students, like me, get started with programming using Java and not C or C++.
-Therefore I would consider myself a good Java programmer, but I never wrote a bigger project using C.
+In most schools in Austria students get started with programming using Java and not C or C++.
+Therefore the authors would consider themselves as a good Java programmer, 
+but they never wrote a bigger project using C.
 
-Further alternatives are event-based frameworks using a scripting language such as node or in general scripting languages, but these can be implemented very easily, because the JVM(Java Virtual Machine) supports a huge amount of additional languages including javascript, scala and clojure.
+Further alternatives are event-based frameworks using a scripting language 
+such as node or in general scripting languages, but these can be implemented very easily, 
+because the JVM(Java Virtual Machine) supports a huge amount of additional languages 
+including javascript, scala and clojure.
 %\lstinputlisting[language=Java]{listings/Debugger.java}
 
 \section{State of the Art}
 
 \section{Design Approach}
+The framework of the LinkJVM consists of one high and one low level part.
+The low level part of the LinkJVM wraps the existing C++ library of libkovan, 
+the high level now wraps the low level part and represents the API for the user.
+So the user only uses the high level part of the LinkJVM and should not come in 
+contact with any low level things.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Class-Diagram.pdf}
+\caption{Class-Diagram}
+\label{fig:Class-Diagram}
+\end{figure}
+
+For example the user has a digital sensor like a lever on his robot and now 
+wants to use this sensor in his program. He will now create a new high level 
+DigitalSensor object, which uses a low level DigitalSensor object in the 
+backround (see Figure \ref{fig:Class-Diagram}) that again uses the C++ implementation of a DigitalSensor.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{images/Object-Diagram.pdf}
+\caption{Object-Diagram}
+\label{fig:Object-Diagram}
+\end{figure}
+
+The user can create as much high level objects of the same sensor, motor, 
+servo,... , which will all uses the same low level object with the specified 
+unique identifier, which is for example the port of a sensor. If the user 
+creates a new high level object with a new unique identifier that is unequal to 
+an existing low level object the appropriate factory would 
+create a new low level object with the specified unique identifier. (see Figue \ref{fig:Object-Diagram})
 \section{Java Environment}
 LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the java core classes.
 Moreover it also offeres a Java compiler(javac) for compiling java source code as well as jar for packaging compiled class files.

@@ -67,13 +67,13 @@
         <attribute name="language" type="string">de</attribute>
         <attribute name="enginename" type="string">pdflatex</attribute>
         <attribute name="dops2pdf" type="bool">1</attribute>
-        <attribute name="doliveupdate" type="bool">1</attribute>
+        <attribute name="doliveupdate" type="bool">0</attribute>
         <attribute name="dobibtex" type="bool">1</attribute>
         <attribute name="bibtexcommand" type="string">bibtex</attribute>
         <relationship name="project" type="1/1" destination="PROJECT" idrefs="z104"></relationship>
     </object>
     <object type="UISETTINGS" id="z103">
-        <attribute name="pdfviewscrollrect" type="string">{{0, 737.00648748819776}, {604, 820.63392029656757}}</attribute>
+        <attribute name="pdfviewscrollrect" type="string">{{0, 33.542168675079211}, {604, 820.63392029639931}}</attribute>
         <attribute name="showpdfthumbnails" type="bool">0</attribute>
         <attribute name="selectedcontrolstab" type="int16">0</attribute>
         <attribute name="maxoutlinedepth" type="int16">7</attribute>
@@ -129,12 +129,12 @@
     </object>
     <object type="TEXFILE" id="z107">
         <attribute name="wasopen" type="bool">0</attribute>
-        <attribute name="visiblerect" type="string">{{0, 775}, {614.5, 520}}</attribute>
-        <attribute name="lasteditdate" type="date">417210458.21599102020263671875</attribute>
+        <attribute name="visiblerect" type="string">{{0, 1905.5}, {608.5, 615.5}}</attribute>
+        <attribute name="lasteditdate" type="date">417213781.40092998743057250977</attribute>
         <attribute name="istext" type="bool">1</attribute>
-        <attribute name="fileloaddate" type="date">417210459.04224997758865356445</attribute>
+        <attribute name="fileloaddate" type="date">417213784.15430098772048950195</attribute>
         <attribute name="extension" type="string">tex</attribute>
-        <attribute name="cursor" type="string">{2035, 0}</attribute>
+        <attribute name="cursor" type="string">{6398, 0}</attribute>
         <attribute name="sortindex" type="int32">8</attribute>
         <attribute name="name" type="string">linkjvm.tex</attribute>
         <attribute name="isexpanded" type="bool">0</attribute>
