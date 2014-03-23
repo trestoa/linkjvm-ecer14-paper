@@ -103,7 +103,7 @@ LinkJVM provides an open source full Java Runtime Environment(JRE) as well as an
 The following paper shows a high and low level based implementation of a Java library for controlling the robot.
 This is archieved by wrapping the native libkovan.
 LinkJVM is also integrated into the KIPR Link's build system which allows easy and user-friendly deployment.
-Further this papers describes of how to write programs in Java with the LinkJVM and how to get them 
+Further this papers describes how to write programs in Java with the LinkJVM and how to get them 
 running on the KIPR Link.
 }
 
@@ -125,8 +125,8 @@ So what is the best language for Botball\cite{Botball}?
 The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
 C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
-This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right. 
-While libkovan mostly avoids the real challenges or coding C, when implementing complex algorithms there is no way around pointers and memory management.
+This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right choice. 
+While libkovan mostly avoids the real challanges in coding C, when implementing complex algorithms there is no way around pointers and memory management.
 
 Another well-known possibility is Java\cite{Java}. 
 Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
@@ -150,10 +150,10 @@ including javascript, scala and clojure.
 
 \section{State of the Art}
 LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
-While the Java\cite{Java} environment JamVM and GNU Classpath\cite{GNU} work pretty well the robot library is not that good.
+While the Java\cite{Java} environment JamVM and GNU Classpath\cite{GNU} works pretty well the robot library is not that good.
 At that time LinkJVM 1.0\cite{linkjvm1.0} wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0\cite{linkjvm1.0} first calls the native C function and then the native C function manages the C++ objects.
-This approach is easier to implement, but it also comes with some downsides.
-The most important of them is that there no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
+Is approach is in easier to implement, but it also comes with some downsides.
+The most important of them is that there is no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
 Moreover LinkJVM 1.0\cite{linkjvm1.0} offers only a very small API with much less features that libkovan\cite{libkovan} does and LinkJVM's 1.0\cite{linkjvm1.0} vision system contains also just one camera class.
 Therefor the authors decided to write a new library from scratch, which will fix all this issues. 
 
@@ -174,7 +174,7 @@ contact with any low level things.
 
 For example the user has a digital sensor like a lever on his robot and now 
 wants to use this sensor in his program. He will now create a new high level 
-DigitalSensor object, which uses a low level DigitalSensor object in the 
+DigitalSensor object, which only uses one low level DigitalSensor object in the 
 background (see Figure \ref{fig:Class-Diagram}) that again uses the C++ implementation of a DigitalSensor.
 
 The user can create as much high level objects of the same sensor, motor, 
@@ -197,10 +197,10 @@ This software generates the Java\cite{Java} and the C++ wrapper out of an interf
 \subsection{High Level}
 The high level part contains, as already mentioned before, the object oriented API for the user. 
 Internally every time the user creates a new high level object, the high object requests a new low object.
-See Figure \ref{fig:Class-Diagram} and Figure \ref{fig:Object-Diagram}.
+(See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}).
 
 \section{LinkJVM - API}
-The API of LinkJVM (or the robot libary) provides a object oriented, well documented , easily to use and maintainable library for controlling the KIPR\cite{KIPR} Link\cite{link}
+The API of LinkJVM (or the robot library) provides a object oriented, well documented and easy to use and maintainable library for controlling the KIPR\cite{KIPR} Link\cite{link}
  and all its connected devices.
 The API contains classes for the following components:
 \begin{itemize}
@@ -224,7 +224,7 @@ The next listing shows the usage of these methods:
 LinkJVM's robot libary provides classes for the different types or motors, servos and sensors.
 The following listing shows the usage of motors and sensors:
 \lstinputlisting[caption={Basic usage of sensors and motors}, language=Java]{listings/drive_until_bump.java}
-The example above shows a very simple program, which let the robot drive forward 
+The example above shows a very simple program, which lets the robot drive forward 
 until a digital sensor which is used as bump sensor bumps.
 
 \subsection{Create}
@@ -240,9 +240,9 @@ button on the KIPR\cite{KIPR} Link\cite{link} is pressed.
 \subsection{Vision System}
 The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
 \begin{itemize}
-	\item {\bf ImageProcessor}: The ImageProcessor processes the image to color or QR blobs with a given CameraConfig and a given channel number and proviedes afterward the CameraObjects. 
+	\item {\bf ImageProcessor}: The ImageProcessor processes the image to color or QR blobs with a given CameraConfig and a given channel number and proviedes afterwards the CameraObjects. 
 	\item {\bf CameraObject}: One CameraObject represents an object tracked by an image processor. It contains information like the bounding box or the center point about the blob.
-	\item {\bf CameraConfig}: An CameraConfig object contains several configuration attribute for an ImageProcessor.
+	\item {\bf CameraConfig}: An CameraConfig object contains several configuration attributes for an ImageProcessor.
 \end{itemize}
 \begin{figure}[H]
 \centering
@@ -296,7 +296,7 @@ it in a simple text editor and compile the source code over the console.
 \label{fig:linkjvm_uploader}
 \end{figure}
 
-At the beginning it was only possible to upload/run the users program via scp/ssh to/on the KIPR\cite{KIPR} Link\cite{link}.
+At the beginning it was only possible to upload/run the user's program via scp/ssh to/on the KIPR\cite{KIPR} Link\cite{link}.
 Running a program over ssh is not tournament-conformal, so the only thing that could be done 
 was to write a C wrapper, which executes your Java\cite{Java} program.
 
@@ -327,15 +327,22 @@ The kovan kmod is a kernel module which provides an interface to KIPR\cite{KIPR}
 Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode. 
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
-\bibitem{Java}
-  Java, Oracle,
-  http://www.java.com/en/, March 2014
-\bibitem{KIPR}
-  KISS Institute for Practical Robotics,
-  http://www.kipr.org, 2014
 \bibitem{Botball}
   Botball, Standards-Based Educational Robotics Program, 
   http://www.botball.org, 2014
+\bibitem{Java}
+  Java, Oracle,
+  http://www.java.com/en/, March 2014
+\bibitem{linkjvm1.0}
+  Klein Markus: \frqq Java on the KIPR Link\flqq  ,
+  http://files.kipr.org/gcer/2013/proceedings/
+  Klein\_Java\_KIPR\_Link.pdf, 2013
+\bibitem{libkovan}
+  McDorman B.: libkovan C standard library,
+  https://github.com/kipr/libkovan, March 2014
+\bibitem{KIPR}
+  KISS Institute for Practical Robotics,
+  http://www.kipr.org, 2014
 \bibitem{node}
   Node Javascript, 
   http://nodejs.org/, March 2014
@@ -346,13 +353,6 @@ Using this approach, LinkJVM could also be built without an build server, becaus
   JRE, Java Runtime Environment, 
   http://www.oracle.com/technetwork/java/javase/
   downloads/, March 2014
-\bibitem{linkjvm1.0}
-  Klein Markus: \frqq Java on the KIPR Link\flqq  ,
-  http://files.kipr.org/gcer/2013/proceedings/
-  Klein\_Java\_KIPR\_Link.pdf, 2013
-\bibitem{libkovan}
-  McDorman B.: libkovan C standard library,
-  https://github.com/kipr/libkovan, March 2014
 \bibitem{GCER}
   GCER, Global Conference on Educational Robotics,
   http://www.kipr.org/gcer, 2014
