@@ -239,6 +239,23 @@ LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight
 Moreover it also offeres a Java compiler(javac) for compiling java source code as well as jar for packaging compiled class files.
 \subsection{JamVM}
 
+\section{Integration into KIPR Link's build system}
+The KIPR Link is based on a build framework called \frqq OpenEmbedded\flqq and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux.
+Unfortuately the KIPR Link does not work with the latest version of these tools, so building the firmware or adding packages is very hard.
+Furthermore OpenEmbedded only works on Linux machines and also requires knowledge of basic and moderately complex terminal commands.
+Fortunately with the excellent help of KIPR staff, the authors managed to set up a build server and compile a LinkJVM package.
+
+\subsection{LinkJVM's build system}
+As already mentioned before LinkJVM's source consists of a C++ and a Java part.
+To combine both build processes using only one build system the authors decided to use CMake for compilation.
+CMake is an open source, cross platform build system which supports C++ as well as Java and automatically generates makefiles.
+
+For integration into KIPR Link's build system the authors added an meta-layer which provides a bitbake recipes for building LinkJVM.
+
+\subsubsection{Deployment}
+Using bitbake LinkJVM is compiled and packaged into a ipk software package which can be easily installed on the Link directly via BotUI.
+
+It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link firmware.
 \section{Developing Tools}
 Because the code the user writes with the LinkJVM library uses the programming 
 language Java, it is not possible to use the KISS IDE from KIPR because it only 
