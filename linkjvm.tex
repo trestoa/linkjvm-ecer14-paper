@@ -69,7 +69,7 @@ showstringspaces=false}
 %\author[ ,\corresp]{}\correspemail{}
 \author[1, \corresp]{Markus Klein}\correspemail{m@mklein.co.at}
 \author[1]{Christoph Hackenberger}
-\affil[1]{Vienna Institute of Technology}
+\affil[1]{Vienna Institute of Technology (TGM)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 %%%  Main document.
@@ -92,12 +92,12 @@ showstringspaces=false}
 \keywords{Java, JVM, Botball, Library, Framework, Wrapper, KIPR Link, Libkovan, Robotic, JNI, SWIG, JamVM, GNU Classpath, Open Source}
 
 \section{Introduction}
-The purpose of Botball is to motivate students for building and programming autonomous robots.
-Most new students to Botball do not have any experience with programming.
+The purpose of Botball\cite{Botball} is to motivate students for building and programming autonomous robots.
+Most new students to Botball\cite{Botball} do not have any experience with programming.
 Therefore the way of developing the robot software has to be very beginner friendly and easy to use, 
 but at the same time very powerful.
 
-So what is the best language for Botball?
+So what is the best language for Botball\cite{Botball}?
 The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
 C for example is a very powerful fast and processor-near language so it is quite good for a robot 
@@ -108,42 +108,42 @@ it would be very hard to learn and understand C code.
 If you want to develop a complex C program, you have to know how pointer arithmetic and memory 
 access works.
 
-Another well-known possibility is Java. 
-Java is much easier to learn and also pretty powerful and reliable.
+Another well-known possibility is Java\cite{Java}. 
+Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
 Of course it is not as fast as compiled languages such as C or C++, 
 but in the most cases it will make no real difference.
-Java is better for beginners, 
+Java\cite{Java} is better for beginners, 
 compared to C it does not require special knowledge about how a computer works.
-Java is a higher level language.
+Java\cite{Java} is a higher level language.
 It provides automatic garbage collection to handle memory management 
 and offers an excellent set of basic data structures such as lists, queues and maps.
 In C everything has to be built from scratch.
 The object-oriented paradigm is also very helpful to structure the program 
 to improve the maintainability.
 
-In most schools in Austria students get started with programming using Java and not C or C++.
-Therefore the authors would consider themselves as a good Java programmer, 
+In most schools in Austria students get started with programming using Java\cite{Java} and not C or C++.
+Therefore the authors would consider themselves as a good Java\cite{Java} programmer, 
 but they never wrote a bigger project using C.
 
 Further alternatives are event-based frameworks using a scripting language 
-such as node or in general scripting languages, but these can be implemented very easily, 
-because the JVM(Java Virtual Machine) supports a huge amount of additional languages 
+such as node\cite{node} or in general scripting languages, but these can be implemented very easily, 
+because the JVM\cite{JVM}(Java\cite{Java} Virtual Machine) supports a huge amount of additional languages 
 including javascript, scala and clojure.
 %\lstinputlisting[language=Java]{listings/Debugger.java}
 
 \section{State of the Art}
-LinkJVM 1.0 was published at the Global Conference on Educational Robotics 2013 (GCER 2013).
-While the Java environment JamVM and GNU Classpath work pretty well the robot library is not that good.
-At that time LinkJVM 1.0 wraps over libkovan's C bindings which makes the libary structure pretty poor, because LinkJVM first calls the native C function and then the native C function manages the C++ objects.
+LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
+While the Java\cite{Java} environment JamVM and GNU Classpath\cite{GNU} work pretty well the robot library is not that good.
+At that time LinkJVM 1.0\cite{linkjvm1.0} wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0\cite{linkjvm1.0} first calls the native C function and then the native C function manages the C++ objects.
 Is approach is in easier to implement, but it also comes with some downsides.
-The most important of them is that there no possibility to write a thread save library using this approach, because libkovan itself is not thread-save.
-Moreover LinkJVM 1.0 offers only a very small API with much less features that libkovan does and LinkJVM's vision system contains also just one camera class.
+The most important of them is that there no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
+Moreover LinkJVM 1.0\cite{linkjvm1.0} offers only a very small API with much less features that libkovan\cite{libkovan} does and LinkJVM's 1.0\cite{linkjvm1.0} vision system contains also just one camera class.
 Therefor the authors decided to write a new library from scratch which will fix all this issues. 
 
 \section{Design Approach}
 \label{sec:design-approach}
 The framework of the LinkJVM consists of one high and one low level part.
-The low level part of the LinkJVM wraps the existing C++ library of libkovan, 
+The low level part of the LinkJVM wraps the existing C++ library of libkovan\cite{libkovan}, 
 the high level now wraps the low level part and represents the API for the user.
 So the user only uses the high level part of the LinkJVM and should not come in 
 contact with any low level things.
@@ -177,8 +177,8 @@ create a new low level object with the specified unique identifier. (see figure 
 Both the low and the high level parts are described in detail in the following subsections:
 
 \subsection{Low Level}
-The low level part of the framework contains the java side libkovan wrapper. 
-Every object of a low level class is also a native c++ object.
+The low level part of the framework contains the Java\cite{Java} side libkovan\cite{libkovan} wrapper. 
+Every object of a low level class is also a native C++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
 Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Image Generate(SWIG).
@@ -195,7 +195,7 @@ LinkJVM does support motors, servos, digital and analog sensors, hardware and
 software buttons, vision system, iRobot Create, AR.Drone 1.0/2.0.
 
 \subsection{Botball Class}
-The Botball Class contains some basically static methods like shutDownIn, 
+The Botball\cite{Botball} Class contains some basically static methods like shutDownIn, 
 waitForLight or msleep.
 The next example shows the usage of these methods:
 \lstinputlisting[language=Java]{listings/botball_class.java}
@@ -208,13 +208,13 @@ until a digital sensor which is used as bump sensor bumps.
 
 \subsection{Create}
 The iRobot Create is a very good example to show the advantage of the usage of 
-an object oriented programming language like Java.
+an object oriented programming language like Java\cite{Java}.
 The following example shows the usage of the iRobot Create:
 \lstinputlisting[language=Java]{listings/create_roomtour.java}
 With this code it is possible to do a room tour with the iRobot Create.
 After the start button was pressed the Create starts moving until it bumps, then 
 it turns and moves on in another direction. The program runs until the side 
-button on the KIPR Link is pressed.
+button on the KIPR\cite{KIPR} Link is pressed.
 
 \subsection{Vision System}
 The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
@@ -237,8 +237,8 @@ Therefore the API provides a debugger class which connects establishes a connect
 \lstinputlisting[language=Java]{listings/Debugger.java}
 
 \section{Java Environment}
-LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the java core classes.
-Moreover it also offeres a Java compiler(javac) for compiling java source code as well as jar for packaging compiled class files.
+LinkJVM includes a Java\cite{Java} Runtime Environment(JRE\cite{JRE}) which consists of a lightweight Java\cite{Java} Virtual Machine(JVM\cite{JVM}) and GNU Classpath\cite{GNU} an open source implementation of the Java\cite{Java} core classes.
+Moreover it also offeres a Java\cite{Java} compiler(javac) for compiling Java\cite{Java} source code as well as jar for packaging compiled class files.
 \subsection{JamVM}
 
 \section{Integration into KIPR Link's build system}
@@ -260,7 +260,7 @@ Using bitbake LinkJVM is compiled and packaged into a ipk software package which
 It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link firmware.
 \section{Developing Tools}
 Because the code the user writes with the LinkJVM library uses the programming 
-language Java, it is not possible to use the KISS IDE from KIPR because it only 
+language Java\cite{Java}, it is not possible to use the KISS IDE from KIPR\cite{KIPR} because it only 
 supports C or C++ code.
 
 The authors decided to leave the choice of how to write the code at the user. It 
@@ -274,12 +274,12 @@ it in a simple text editor and compile the source code over the console.
 \label{fig:linkjvm_uploader}
 \end{figure}
 
-At the beginning it was only possible to upload/run the users program via scp/ssh to/on the KIPR Link.
+At the beginning it was only possible to upload/run the users program via scp/ssh to/on the KIPR\cite{KIPR} Link.
 Running a program over ssh is not tournament-conformal, so the only thing that could be done 
-was to write a C wrapper, which executes your java program.
+was to write a C wrapper, which executes your Java\cite{Java} program.
 
 So the next logical thing the authors have to think about is how to get the compiled 
-program on the KIPR Link and make it run able there in a for the user easy way?
+program on the KIPR\cite{KIPR} Link and make it run able there in a for the user easy way?
 They first thinked about a plugin for the Eclipse IDE but this would extremely 
 limit the user of how to write the code, which like already mentioned the 
 authors wanted to leave the choice at the user.
@@ -287,11 +287,41 @@ The authors decided to write an independent program, which is called
 LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}), 
 to upload .jar files to the link. This program also automatically creates C 
 wrappers, which executes the .jar files and which are shown in the menu point 
-'Programs' on the KIPR Link. All this is done over ssh and scp connections in 
+'Programs' on the KIPR\cite{KIPR} Link. All this is done over ssh and scp connections in 
 the background.
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
-
+\bibitem{KIPR}
+  KISS Institute for Practical Robotics,
+  http://www.kipr.org, 2014
+\bibitem{Botball}
+  Botball, Standards-Based Educational Robotics Program, 
+  http://www.botball.org, 2014
+\bibitem{Java}
+  Java, Oracle,
+  http://www.java.com/en/, March 2014
+\bibitem{node}
+  Node Javascript, 
+  http://nodejs.org/, March 2014
+\bibitem{JVM}
+  JVM, Java Virtual Machine,
+  http://en.wikipedia.org/wiki/Java\_virtual\_machine, March 2014
+\bibitem{JRE}
+  JRE, Java Runtime Environment, 
+  http://www.oracle.com/technetwork/java/javase/downloads/, March 2014
+\bibitem{linkjvm1.0}
+  Klein Markus: 'Java on the KIPR Link',
+  http://files.kipr.org/gcer/2013/proceedings/
+  Klein\_Java\_KIPR\_Link.pdf, 2013
+\bibitem{libkovan}
+  McDorman B.: libkovan C standard library,
+  https://github.com/kipr/libkovan, March 2014
+\bibitem{GCER}
+  GCER, Global Conference on Educational Robotics,
+  http://www.kipr.org/gcer, 2014
+\bibitem{GNU}
+  GNU Classpath, open source Java core class implementation,
+  http://www.gnu.org/software/classpath/, March 2014
 \end{thebibliography}
 
 \end{document}
