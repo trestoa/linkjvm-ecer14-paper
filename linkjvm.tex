@@ -247,8 +247,8 @@ Therefore the API provides a debugger class which connects establishes a connect
 
 \section{Java Environment}
 LinkJVM includes a Java\cite{Java} Runtime Environment(JRE\cite{JRE}) which consists of a lightweight Java\cite{Java} Virtual Machine(JVM\cite{JVM}) and GNU Classpath\cite{GNU} an open source implementation of the Java\cite{Java} core classes.
-Moreover it also offeres a Java\cite{Java} compiler(javac) for compiling Java\cite{Java} source code as well as jar for packaging compiled class files.
-\subsection{JamVM}
+So LinkJVM 2.0 uses basically the same java environment than LinkJVM 1.0\cite{linkjvm1.0} does, but in addition LinkJVM 2.0 offers the \frqq eclipse java compiler\flqq  as Java compiler (javac) and the \frqq jar\flqq  for packaging multiple class files.
+Using these tools Java programs can be directly compiled and packaged on the KIPR Link, but since class and jar files contain cross platform bytecode, it is not necessary to compile the programs on the KIPR Link. (See section \nameref{sec:developing-tools})
 
 \section{Integration into KIPR Link's build system}
 The KIPR Link is based on a build framework called \frqq OpenEmbedded\flqq and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux\cite{Look_Inside_Kipr_Link}.
@@ -267,7 +267,9 @@ For integration into KIPR Link's build system the authors added an meta-layer wh
 Using bitbake LinkJVM is compiled and packaged into a ipk software package which can be easily installed on the Link directly via BotUI.
 
 It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link firmware.
+
 \section{Developing Tools}
+\label{sec:developing-tools}
 Because the code the user writes with the LinkJVM library uses the programming 
 language Java\cite{Java}, it is not possible to use the KISS IDE from KIPR\cite{KIPR} because it only 
 supports C or C++ code.
