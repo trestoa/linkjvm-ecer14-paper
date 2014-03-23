@@ -6,13 +6,13 @@ public static void main(String[] args) {
 	SideButton sb = new SideButton();
 	while(!sb.getValue()) {
 		camera.update();
-		if(camera.getObjectCount() &gt; 0) {
+		if(camera.getObjectCount() > 0) {
 			Rectangle rec = camera.getBoundingBox(0);
-			if(rec.getWidth() &gt; 80){
-				if(rec.getCenter().getX() &lt; 290){
+			if(rec.getWidth() > 80){
+				if(rec.getCenter().getX() < 290){
 					create.driveDirect(100, 0);
 				}
-				else if(rec.getCenter().getX() &gt; 350){
+				else if(rec.getCenter().getX() > 350){
 					create.driveDirect(100, 0);
 				}
 				Botball.msleep(500);
