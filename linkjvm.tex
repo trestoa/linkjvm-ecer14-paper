@@ -99,7 +99,7 @@ Java\cite{Java} is an object oriented programming language, which is not that ha
 learn.
 Unfortunately the KIPR\cite{KIPR} Link\cite{link} does not support Java\cite{Java} out of the box.
 
-LinkJVM provides an open source full Java Runtime Environment(JRE) as well as an object oriented and easy to use library for controlling the robot.
+LinkJVM provides an open source full Java\cite{Java} Runtime Environment(JRE\cite{JRE}) as well as an object oriented and easy to use library for controlling the robot.
 
 The following paper shows a high and low level based implementation of Java\cite{Java} 
 integrated into the KIPR\cite{KIPR} Link's\cite{link} build system. Further this papers 
@@ -200,7 +200,7 @@ Every object of a low level class is also a native C++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
 Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Image Generate(SWIG).
-This software generates the Java and the C++ wrapper out of an interface file which that all class definition which should be wrapped.
+This software generates the Java\cite{Java} and the C++ wrapper out of an interface file which that all class definition which should be wrapped.
 
 \subsection{High Level}
 The high level part contains, as already mentioned before, the object oriented API for the user. 
@@ -266,8 +266,8 @@ Therefore the API provides a debugger class which connects establishes a connect
 
 \section{Java Environment}
 LinkJVM includes a Java\cite{Java} Runtime Environment(JRE\cite{JRE}) which consists of a lightweight Java\cite{Java} Virtual Machine(JVM\cite{JVM}) and GNU Classpath\cite{GNU} an open source implementation of the Java\cite{Java} core classes.
-So LinkJVM 2.0 uses basically the same java environment than LinkJVM 1.0\cite{linkjvm1.0} does, but in addition LinkJVM 2.0 offers the \frqq eclipse java compiler\flqq  as Java compiler (javac) and the \frqq jar\flqq  for packaging multiple class files.
-Using these tools Java programs can be directly compiled and packaged on the KIPR Link, but since class and jar files contain cross platform bytecode, it is not necessary to compile the programs on the KIPR Link. (See section \nameref{sec:developing-tools})
+So LinkJVM 2.0 uses basically the same Java\cite{Java} environment than LinkJVM 1.0\cite{linkjvm1.0} does, but in addition LinkJVM 2.0 offers the \frqq eclipse Java\cite{Java} compiler\flqq  as Java compiler (javac) and the \frqq jar\flqq  for packaging multiple class files.
+Using these tools Java\cite{Java} programs can be directly compiled and packaged on the KIPR Link, but since class and jar files contain cross platform bytecode, it is not necessary to compile the programs on the KIPR Link. (See section \nameref{sec:developing-tools})
 
 \section{Integration into KIPR Link's build system}
 The KIPR\cite{KIPR} Link\cite{link} is based on a build framework called \frqq OpenEmbedded\flqq\cite{openembedded} and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux\cite{Look_Inside_Kipr_Link}.
@@ -276,9 +276,9 @@ Furthermore OpenEmbedded\cite{openembedded} only works on Linux machines and als
 Fortunately with the excellent help of KIPR staff, the authors managed to set up a build server and compile a LinkJVM package.
 
 \subsection{LinkJVM's build system}
-As already mentioned before LinkJVM's source consists of a C++ and a Java part.
+As already mentioned before LinkJVM's source consists of a C++ and a Java\cite{Java} part.
 To combine both build processes using only one build system the authors decided to use CMake for compilation.
-CMake is an open source, cross platform build system which supports C++ as well as Java and automatically generates makefiles.
+CMake is an open source, cross platform build system which supports C++ as well as Java\cite{Java} and automatically generates makefiles.
 
 For integration into KIPR\cite{KIPR} Link's\cite{link} build system the authors added an meta-layer which provides a bitbake recipes for building LinkJVM.
 
