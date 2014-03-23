@@ -190,9 +190,19 @@ Internally every time the user creates a new high level object, the high object 
 See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}.
 
 \section{LinkJVM - API}
-What libraries does LinkJVM offer to the user?
-LinkJVM does support motors, servos, digital and analog sensors, hardware and 
-software buttons, vision system, iRobot Create, AR.Drone 1.0/2.0.
+The API of LinkJVM (or the robot libary) provides a object orented, well documented and easily use and maintainable library for controlling the KIPR Link and all its connected devices.
+The API contains class contains classes for the following components:
+\begin{itemize}
+	\item iRobot Create
+	\item motors
+	\item motors and servos
+	\item analog and digital sensors
+	\item hardware and software buttons
+	\item vision system
+	\item depth camera (experimental)
+	\item AR.Drone 1.0/2.0
+\end{itemize}
+The most important components of the framework are described in detail in the following subsections.
 
 \subsection{Botball Class}
 The Botball\cite{Botball} Class contains some basically static methods like shutDownIn, 
@@ -242,7 +252,7 @@ Moreover it also offeres a Java\cite{Java} compiler(javac) for compiling Java\ci
 \subsection{JamVM}
 
 \section{Integration into KIPR Link's build system}
-The KIPR Link is based on a build framework called \frqq OpenEmbedded\flqq and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux.
+The KIPR Link is based on a build framework called \frqq OpenEmbedded\flqq and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux\cite{Look_Inside_Kipr_Link}.
 Unfortuately the KIPR Link does not work with the latest version of these tools, so building the firmware or adding packages is very hard.
 Furthermore OpenEmbedded only works on Linux machines and also requires knowledge of basic and moderately complex terminal commands.
 Fortunately with the excellent help of KIPR staff, the authors managed to set up a build server and compile a LinkJVM package.
@@ -287,7 +297,7 @@ The authors decided to write an independent program, which is called
 LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}), 
 to upload .jar files to the link. This program also automatically creates C 
 wrappers, which executes the .jar files and which are shown in the menu point 
-'Programs' on the KIPR\cite{KIPR} Link. All this is done over ssh and scp connections in 
+\frqq Programs\flqq  on the KIPR\cite{KIPR} Link. All this is done over ssh and scp connections in 
 the background.
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
@@ -308,9 +318,10 @@ the background.
   http://en.wikipedia.org/wiki/Java\_virtual\_machine, March 2014
 \bibitem{JRE}
   JRE, Java Runtime Environment, 
-  http://www.oracle.com/technetwork/java/javase/downloads/, March 2014
+  http://www.oracle.com/technetwork/java/javase/
+  downloads/, March 2014
 \bibitem{linkjvm1.0}
-  Klein Markus: 'Java on the KIPR Link',
+  Klein Markus: \frqq Java on the KIPR Link\flqq  ,
   http://files.kipr.org/gcer/2013/proceedings/
   Klein\_Java\_KIPR\_Link.pdf, 2013
 \bibitem{libkovan}
@@ -322,6 +333,10 @@ the background.
 \bibitem{GNU}
   GNU Classpath, open source Java core class implementation,
   http://www.gnu.org/software/classpath/, March 2014
+\bibitem{Look_Inside_Kipr_Link}
+  Braden McDorman, Joshua Southerland: \frqq A Look Inside the KIPR Link\flqq  ,
+  http://files.kipr.org/gcer/2013/proceedings/
+  McDorman\_A\_Look\_Inside\_the\_KIPR\_Link.pdf, 2013
 \end{thebibliography}
 
 \end{document}
