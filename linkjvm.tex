@@ -181,11 +181,13 @@ The low level part of the framework contains the java side libkovan wrapper.
 Every object of a low level class is also a native c++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
+Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Image Generate(SWIG).
+This software generates the Java and the C++ wrapper out of an interface file which that all class definition which should be wrapped.
 
 \subsection{High Level}
-The high level part contains, as already mentioned before, the API for the user. 
+The high level part contains, as already mentioned before, the object oriented API for the user. 
 Internally every time the user creates a new high level object, the high object requests a new low object.
-See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram} for more details.
+See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}.
 
 \section{LinkJVM - API}
 What libraries does LinkJVM offer to the user?
