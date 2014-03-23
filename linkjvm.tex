@@ -126,7 +126,7 @@ The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
 C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
 This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right. 
-While libkovan mostly avoids the real challanges or coding C, when implementing complex algorithms there is no way around pointers and memory management.
+While libkovan mostly avoids the real challenges or coding C, when implementing complex algorithms there is no way around pointers and memory management.
 
 Another well-known possibility is Java\cite{Java}. 
 Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
@@ -152,10 +152,10 @@ including javascript, scala and clojure.
 LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
 While the Java\cite{Java} environment JamVM and GNU Classpath\cite{GNU} work pretty well the robot library is not that good.
 At that time LinkJVM 1.0\cite{linkjvm1.0} wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0\cite{linkjvm1.0} first calls the native C function and then the native C function manages the C++ objects.
-Is approach is in easier to implement, but it also comes with some downsides.
+This approach is easier to implement, but it also comes with some downsides.
 The most important of them is that there no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
 Moreover LinkJVM 1.0\cite{linkjvm1.0} offers only a very small API with much less features that libkovan\cite{libkovan} does and LinkJVM's 1.0\cite{linkjvm1.0} vision system contains also just one camera class.
-Therefor the authors decided to write a new library from scratch which will fix all this issues. 
+Therefor the authors decided to write a new library from scratch, which will fix all this issues. 
 
 \section{Design Approach}
 \label{sec:design-approach}
@@ -191,18 +191,18 @@ The low level part of the framework contains the Java\cite{Java} side libkovan\c
 Every object of a low level class is also a native C++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
-Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Image Generate(SWIG).
-This software generates the Java\cite{Java} and the C++ wrapper out of an interface file which that all class definition which should be wrapped.
+Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Interface Generator(SWIG\cite{SWIG}).
+This software generates the Java\cite{Java} and the C++ wrapper out of an interface file with all class definition that should be wrapped.
 
 \subsection{High Level}
 The high level part contains, as already mentioned before, the object oriented API for the user. 
 Internally every time the user creates a new high level object, the high object requests a new low object.
-See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}.
+See Figure \ref{fig:Class-Diagram} and Figure \ref{fig:Object-Diagram}.
 
 \section{LinkJVM - API}
-The API of LinkJVM (or the robot libary) provides a object oriented, well documented and easily use and maintainable library for controlling the KIPR\cite{KIPR} Link\cite{link}
+The API of LinkJVM (or the robot libary) provides a object oriented, well documented , easily to use and maintainable library for controlling the KIPR\cite{KIPR} Link\cite{link}
  and all its connected devices.
-The API contains class contains classes for the following components:
+The API contains classes for the following components:
 \begin{itemize}
 	\item iRobot Create\cite{create}
 	\item motors and servos
@@ -375,6 +375,9 @@ Using this approach, LinkJVM could also be built without an build server, becaus
 \bibitem{openembedded}
   OpenEmbedded, build framework for embedded Linux,
   http://www.openembedded.org/wiki/Main\_Page, March 2014
+\bibitem{SWIG}
+  SWIG, Simplified Wrapper and Interface Generator,
+  http://www.swig.org, March 2014
 \end{thebibliography}
 
 \end{document}
