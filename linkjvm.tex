@@ -43,8 +43,9 @@ numbers=left,
 numberstyle=\tiny\color{black},
 stepnumber=1,
 numbersep=10pt,
-tabsize=4,
-showspaces=false,
+tabsize=2,
+frame=single,
+breaklines=true
 showstringspaces=false}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -146,7 +147,7 @@ the high level now wraps the low level part and represents the API for the user.
 So the user only uses the high level part of the LinkJVM and should not come in 
 contact with any low level things.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{images/Class-Diagram.pdf}
 \caption{Class-Diagram}
@@ -158,7 +159,7 @@ wants to use this sensor in his program. He will now create a new high level
 DigitalSensor object, which uses a low level DigitalSensor object in the 
 backround (see Figure \ref{fig:Class-Diagram}) that again uses the C++ implementation of a DigitalSensor.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{images/Object-Diagram.pdf}
 \caption{Object-Diagram}
@@ -219,17 +220,18 @@ The LinkJVM's vision system consists basically of 3 major classes(see figure \re
 	\item {\bf CameraObject}: One CameraObject represents an object tracked by an image processor. It contains information like the bounding box or the center point about the blob.
 	\item {\bf CameraConfig}: An CameraConfig object contains several configuration attribute for an ImageProcessor.
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{images/vision.pdf}
 \caption{Overview over LinkJVM's Vision System}
 \label{fig:Vision-System}
 \end{figure}
+\lstinputlisting[language=Java, breaklines=true]{listings/vision.java}
 
 \subsection{Debugger}
 The LinkJVM-Debugger allows the user to send debug message over the network to a debugger client.
 Therefore the API provides a debugger class which connects establishes a connection to a client.
-\lstinputlisting[language=Java]{listings/debugger.java}
+\lstinputlisting[language=Java]{listings/Debugger.java}
 
 \section{Java Environment}
 LinkJVM includes a Java Runtime Environment(JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the java core classes.
@@ -245,7 +247,7 @@ The authors decided to leave the choice of how to write the code at the user. It
 is possible to write the code with an IDE like Eclipse or Netbeans or just write 
 it in a simple text editor and compile the source code over the console.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{images/linkjvm_uploader.jpg}
 \caption{LinkJVM-Uploader}
