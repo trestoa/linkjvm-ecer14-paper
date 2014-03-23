@@ -101,9 +101,10 @@ Unfortunately the KIPR\cite{KIPR} Link\cite{link} does not support Java\cite{Jav
 
 LinkJVM provides an open source full Java\cite{Java} Runtime Environment(JRE\cite{JRE}) as well as an object oriented and easy to use library for controlling the robot.
 
-The following paper shows a high and low level based implementation of Java\cite{Java} 
-integrated into the KIPR\cite{KIPR} Link's\cite{link} build system. Further this papers 
-describes of how to write programs in Java\cite{Java} with the LinkJVM and how to get them 
+The following paper shows a high and low level based implementation of a Java\cite{Java} library for controlling the robot.
+This is archieved by wrapping the native libkovan.
+LinkJVM is also integrated into the KIPR\cite{KIPR} Link's\cite{link} build system which allows easy and user-friendly deployment.
+Further this papers describes of how to write programs in Java\cite{Java} with the LinkJVM and how to get them 
 running on the KIPR\cite{KIPR} Link\cite{link}.
 }
 
@@ -147,7 +148,6 @@ Further alternatives are event-based frameworks using a scripting language
 such as node\cite{node} or in general scripting languages, but these can be implemented very easily, 
 because the JVM\cite{JVM}(Java\cite{Java} Virtual Machine) supports a huge amount of additional languages 
 including javascript, scala and clojure.
-%\lstinputlisting[language=Java]{listings/Debugger.java}
 
 \section{State of the Art}
 LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
@@ -225,13 +225,14 @@ The most important components of the framework are described in detail in the fo
 \subsection{Botball Class}
 The Botball\cite{Botball} Class contains some basically static methods like shutDownIn, 
 waitForLight or msleep.
-The next example shows the usage of these methods:
+The next listing shows the usage of these methods:
 \lstinputlisting[language=Java]{listings/botball_class.java}
 
 \subsection{Motors/Servos and Sensors}
-The following lines of code listing shows the usage of motors and sensors:
+LinkJVM's robot libary provides classes for the different types or motors, servos and sensors.
+The following listing shows the usage of motors and sensors:
 \lstinputlisting[language=Java]{listings/drive_until_bump.java}
-The example above shows a very simple program, which let to motor drive forward 
+The example above shows a very simple program, which let the robot drive forward 
 until a digital sensor which is used as bump sensor bumps.
 
 \subsection{Create}
@@ -319,6 +320,17 @@ wrappers, which executes the .jar files and which are shown in the menu point
 \frqq Programs\flqq  on the KIPR\cite{KIPR} Link\cite{link}. All this is done over ssh and scp connections in 
 the background.
 
+\section{Conclusion}
+LinkJVM 2.0 comes with a completely new robot library which fixes many problems of LinkJVM 1.0\cite{linkjvm1.0}.
+Now the user does not have care of the thread safety and the vision system provides an excellent API for using the KIPR Link's camera. 
+Since LinkJVM has also been intagrated into the KIPR Link's build it is incredibly easy to install and upgrade which makes it pretty attractive for botball students.
+Although the design approach shown in this paper works very good, it is still not perfect, especially because developing on the core of LinkJVM requires advanced knowledge of the Java Native Interface(JNI) which makes it pretty hard for students to fixed bigs themself.
+Moreover since there are very few poeple with a build server compiling LinkJVM is nearly impossible.
+
+So the next logical step would be to make LinkJVM's robot library a pure Java library and replace the low level part with real implementation.
+This could be archived pretty easy, because the most part of libkovan just communicates woth the kovan kmod via UDP. 
+The kovan kmod is a kernel module which provides an interface to Kipr Link's FPGA.
+Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode. 
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 \bibitem{KIPR}
