@@ -113,36 +113,29 @@ running on the KIPR\cite{KIPR} Link\cite{link}.
 \section{Introduction}
 The purpose of Botball\cite{Botball} is to motivate students for building and programming autonomous robots.
 Most new students to Botball\cite{Botball} do not have any experience with programming.
-Therefore the way of developing the robot software has to be very beginner friendly and easy to use, 
-but at the same time very powerful.
+Therefore the way of developing the robot software has to be very beginner friendly and easy to use, but especially in Austia where most botball students come from technical schools there is also a need for high level languages.
 
 So what is the best language for Botball\cite{Botball}?
 The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
-C for example is a very powerful fast and processor-near language so it is quite good for a robot 
-controller doing a lot of basic things such as controlling servos and motors, reading sensor values 
-and so on. 
-But for students who have not yet learned anything about programming or how a computer works, 
-it would be very hard to learn and understand C code. 
-If you want to develop a complex C program, you have to know how pointer arithmetic and memory 
-access works.
+C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
+This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right. 
+While libkovan mostly avoids the real challanges or coding C, when implementing complex algorithms there is no way around pointers and memory management.
 
 Another well-known possibility is Java\cite{Java}. 
 Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
-Of course it is not as fast as compiled languages such as C or C++, 
-but in the most cases it will make no real difference.
-Java\cite{Java} is better for beginners, 
-compared to C it does not require special knowledge about how a computer works.
-Java\cite{Java} is a higher level language.
+Of course it is not as fast as compiled languages such as C or C++, but in the most cases it will make no real difference.
+Java\cite{Java} is a higher level language than C which makes it in general easier to implement complex algorithms.
 It provides automatic garbage collection to handle memory management 
-and offers an excellent set of basic data structures such as lists, queues and maps.
+and offers an excellent set of basic data structures such as lists, queues and maps as well as a huge standard library including easy to use APIs for network programming, multithreading and much more.
 In C everything has to be built from scratch.
 The object-oriented paradigm is also very helpful to structure the program 
-to improve the maintainability.
+to improve the maintainability, especially in bigger projects.
+Moreover Java is compiled into cross platform bytecode instead of target specific machine code, so Java programs do not need to be compile directly on KIPR Link.
 
 In most schools in Austria students get started with programming using Java\cite{Java} and not C or C++.
 Therefore the authors would consider themselves as a good Java\cite{Java} programmer, 
-but they never wrote a bigger project using C.
+but they never wrote a bigger project using C nor C++.
 
 Further alternatives are event-based frameworks using a scripting language 
 such as node\cite{node} or in general scripting languages, but these can be implemented very easily, 
