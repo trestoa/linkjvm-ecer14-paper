@@ -1,4 +1,4 @@
-public static void main(String[] args) throws InterruptedException {
+public static void main(String[] args) {
 	Create create = new Create();
 	create.connect();
 	camera = new ImageProcessor(new CameraConfig(Resolution.MED_RES), 0);
@@ -15,7 +15,7 @@ public static void main(String[] args) throws InterruptedException {
 				else if(rec.getCenter().getX() &gt; 350){
 					create.driveDirect(100, 0);
 				}
-				Thread.sleep(500);
+				Botball.msleep(500);
 			}
 		}
 		create.stop();
