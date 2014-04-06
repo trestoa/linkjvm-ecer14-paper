@@ -89,7 +89,7 @@ showstringspaces=false}
 \maketitle
 
 \articleabstract{
-One major part of any robot is his software.
+One major part of any robot is its software.
 The software brings the robot to life.
 So it is really important that the software is powerful but at the same time it should be maintainable as easy as
 possible, especially when the program is written by a team.
@@ -118,20 +118,20 @@ running on the KIPR Link.
 
 \section{Introduction}
 The purpose of Botball\cite{Botball} is to motivate students for building and programming autonomous robots.
-Most new students to Botball\cite{Botball} do not have any experience with programming.
+Most new students to Botball do not have any experience with programming.
 Therefore the way of developing the robot software has to be very beginner friendly and easy to use, but especially in Austia where most botball students come from technical schools there is also a need for high level languages.
 
-So what is the best language for Botball\cite{Botball}?
+So what is the best language for Botball?
 The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
 C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on.
 This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right choice.
-While libkovan mostly avoids the real challanges in coding C, when implementing complex algorithms there is no way around pointers and memory management.
+While libkovan mostly avoids the real challenges in coding C, when implementing complex algorithms there is no way around pointers and memory management.
 
 Another well-known possibility is Java\cite{Java}.
-Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
+It is much easier to learn and also pretty powerful and reliable.
 Of course it is not as fast as compiled languages such as C or C++, but in the most cases it will make no real difference.
-Java\cite{Java} is a higher level language than C which makes it in general easier to implement complex algorithms.
+Java is a higher level language than C which makes it in general easier to implement complex algorithms.
 It provides automatic garbage collection to handle memory management
 and offers an excellent set of basic data structures such as lists, queues and maps as well as a huge standard library including easy to use APIs for network programming, multithreading and much more.
 In C everything has to be built from scratch.
@@ -139,28 +139,28 @@ The object-oriented paradigm is also very helpful to structure the program
 to improve the maintainability, especially in bigger projects.
 Moreover Java is compiled into cross platform bytecode instead of target specific machine code, so Java programs do not need to be compile directly on KIPR Link.
 
-In most schools in Austria students get started with programming using Java\cite{Java} and not C or C++.
-Therefore the authors would consider themselves as a good Java\cite{Java} programmer,
+In most schools in Austria students get started with programming using Java and not C or C++.
+Therefore the authors would consider themselves as a good Java programmer,
 but they never wrote a bigger project using C nor C++.
 
 Further alternatives are event-based frameworks using a scripting language
-such as node\cite{node} or in general scripting languages, but these can be implemented very easily,
-because the JVM\cite{JVM}(Java\cite{Java} Virtual Machine) supports a huge amount of additional languages
+such as node.js\cite{node} or in general scripting languages, but these can be implemented very easily,
+because the JVM\cite{JVM}(Java Virtual Machine) supports a huge amount of additional languages
 including javascript, scala and clojure.
 
 \section{State of the Art}
 LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
-While the Java\cite{Java} environment JamVM and GNU Classpath\cite{GNU} works pretty well the robot library is not that good.
-At that time LinkJVM 1.0\cite{linkjvm1.0} wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0\cite{linkjvm1.0} first calls the native C function and then the native C function manages the C++ objects.
-Is approach is in easier to implement, but it also comes with some downsides.
-The most important of them is that there is no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
-Moreover LinkJVM 1.0\cite{linkjvm1.0} offers only a very small API with much less features that libkovan\cite{libkovan} does and LinkJVM's 1.0\cite{linkjvm1.0} vision system contains also just one camera class.
+While the Java environment JamVM and GNU Classpath\cite{GNU} works pretty well the robot library is not that good.
+At that time LinkJVM 1.0 wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0 first calls the native C function and then the native C function manages the C++ objects.
+Though this approach is easier to implement, but it also comes with some downsides.
+The most important of them is that there is no possibility to write a thread safe library using this approach, because libkovan itself is not thread-safe.
+Moreover LinkJVM 1.0 offers only a very small API with much less features that libkovan does and LinkJVM's 1.0 vision system contains also just one camera class.
 Therefor the authors decided to write a new library from scratch, which will fix all this issues.
 
 \section{Design Approach}
 \label{sec:design-approach}
 The framework of the LinkJVM consists of one high and one low level part.
-The low level part of the LinkJVM wraps the existing C++ library of libkovan\cite{libkovan},
+The low level part of the LinkJVM wraps the existing C++ library of libkovan,
 the high level now wraps the low level part and represents the API for the user.
 So the user only uses the high level part of the LinkJVM and should not come in
 contact with any low level things.
@@ -177,7 +177,7 @@ wants to use this sensor in his program. He will now create a new high level
 DigitalSensor object, which only uses one low level DigitalSensor object in the
 background (see Figure \ref{fig:Class-Diagram}) that again uses the C++ implementation of a DigitalSensor.
 
-The user can create as much high level objects of the same sensor, motor,
+The user can create as many high level objects of the same sensor, motor,
 servo,... , which will all uses the same low level object with the specified
 unique identifier, which is for example the port of a sensor. If the user
 creates a new high level object with a unique identifier that is unequal to
@@ -187,16 +187,16 @@ create a new low level object with the specified unique identifier. (see figure 
 Both the low and the high level parts are described in detail in the following subsections:
 
 \subsection{Low Level}
-The low level part of the framework contains the Java\cite{Java} side libkovan\cite{libkovan} wrapper.
-Every object of a low level class is also a native C++ object.
+The low level part of the framework contains the Java side libkovan wrapper.
+Every object of a low level class contains also a native C++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
 Most low level parts are automatically generated wrapper classes using the Simplified Wrapper and Interface Generator(SWIG\cite{SWIG}).
-This software generates the Java\cite{Java} and the C++ wrapper out of an interface file with all class definition that should be wrapped.
+This software generates the Java and the C++ wrapper out of an interface file with all class definition that should be wrapped.
 
 \subsection{High Level}
 The high level part contains, as already mentioned before, the object oriented API for the user.
-Internally every time the user creates a new high level object, the high object requests a new low object.
+Internally every time the user creates a new high level object, the high level object requests a new low object.
 (See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}).
 
 \section{LinkJVM - API}
@@ -215,7 +215,7 @@ The API contains classes for the following components:
 The most important components of the framework are described in detail in the following subsections.
 
 \subsection{Botball Class}
-The Botball\cite{Botball} Class contains some basically static methods like shutDownIn,
+The Botball Class contains some basically static methods like shutDownIn,
 waitForLight or msleep.
 The next listing shows the usage of these methods:
 \lstinputlisting[caption={Usage of the Botball class}, language=Java]{listings/botball_class.java}
@@ -322,7 +322,7 @@ of the Java\cite{Java} Native Interface(JNI), which makes it pretty hard for stu
 Moreover since there are very few people with a build server compiling LinkJVM is nearly impossible.
 
 So the next logical step would be to make LinkJVM's robot library a pure Java\cite{Java} library and replace the low level part with real implementation.
-This could be archived pretty easy, because the most parts of libkovan\cite{libkovan} does nothing else than communicates with the kovan kmod via UDP.
+This could be archieved pretty easy, because the most parts of libkovan\cite{libkovan} does nothing else than communicates with the kovan kmod via UDP.
 The kovan kmod is a kernel module which provides an interface to KIPR\cite{KIPR} Link's\cite{link} FPGA.
 Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode.
 
