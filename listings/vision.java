@@ -1,14 +1,15 @@
 public static void main(String[] args) {
 	Create create = new Create();
 	create.connect();
-	camera = new ImageProcessor(
-	new CameraConfig(Resolution.MED_RES), 0);
+	ImageProcessor camera =
+	new ImageProcessor(new CameraConfig
+	(Resolution.MED_RES), 0);
 	camera.openCamera();
 	SideButton sb = new SideButton();
 	while(!sb.getValue()) {
 		camera.update();
 		if(camera.getObjectCount() > 0) {
-			Rectangle rec = 
+			Rectangle rec =
 			camera.getBoundingBox(0);
 			if(rec.getWidth() > 80){
 				if(rec.getCenter().getX() < 290){
@@ -25,4 +26,3 @@ public static void main(String[] args) {
 	create.disconnect();
 	camera.close();
 }
-
