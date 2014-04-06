@@ -10,15 +10,15 @@
 %\journaltitle{}
 %\volume{}
 %\pubyear{}
-%\licensee{}
-%\authorlist{}
+\licensee{Markus Klein}
+\authorlist{Markus Klein, Christoph Hackenberger}
 %\doi{}
 %\articlenumber{}
 %\articletype{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 
-%%%  List custom packages below, if needed. 
+%%%
+%%%  List custom packages below, if needed.
 %%%  Note that amsfonts,amstext,amssymb,amsmath,amsthm,amscd
 %%%  bm,paralist,color,graphicx,array and subfigure packages
 %%%  are all part of juniorjournal.cls
@@ -52,16 +52,16 @@ showstringspaces=false}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 %%%  Journal article basic info.
-%%%  List all authors first and then their affiliations. 
+%%%  List all authors first and then their affiliations.
 %%%  Link author and affiliations with numbers in optional arguments.
 %%%  For corresponding author use the form given below.
-%%%  
+%%%
 %%%  For example:
 %%%  \author[1]{Name1 Surname1}
 %%%  \author[2, \corresp]{Name2 Surname2}\correspemail{email@edu.com}
 %%%  \affil[1]{Institute1, Country1}
 %%%  \affil[2]{Institute2, Country2}
-%%%  
+%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \articletitle{LinkJVM 2.0 - Java on the KIPR Link} % To break lines in long titles use \\
@@ -75,13 +75,13 @@ showstringspaces=false}
 %%%  Main document.
 %%%
 %%%  To span floating objects (wide images, tables, etc.)
-%%%  over twocolumn layout, use figure* 
+%%%  over twocolumn layout, use figure*
 %%%  or table* environments.
 %%%
 %%%  Examples:
-%%%  \begin{figure*}	 \begin{table*}		
-%%%   ...				  ...				
-%%%  \end{figure*}		 \end{table*}		
+%%%  \begin{figure*}	 \begin{table*}
+%%%   ...				  ...
+%%%  \end{figure*}		 \end{table*}
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -91,10 +91,10 @@ showstringspaces=false}
 \articleabstract{
 One major part of any robot is his software.
 The software brings the robot to life.
-So it is really important that the software is powerful but at the same time it should be maintainable as easy as 
+So it is really important that the software is powerful but at the same time it should be maintainable as easy as
 possible, especially when the program is written by a team.
 
-Java is an object oriented programming language, which is not that hard to 
+Java is an object oriented programming language, which is not that hard to
 learn.
 Unfortunately the KIPR Link does not support Java out of the box.
 
@@ -103,7 +103,7 @@ LinkJVM provides an open source full Java Runtime Environment(JRE) as well as an
 The following paper shows a high and low level based implementation of a Java library for controlling the robot.
 This is archieved by wrapping the native libkovan.
 LinkJVM is also integrated into the KIPR Link's build system which allows easy and user-friendly deployment.
-Further this papers describes how to write programs in Java with the LinkJVM and how to get them 
+Further this papers describes how to write programs in Java with the LinkJVM and how to get them
 running on the KIPR Link.
 }
 
@@ -124,28 +124,28 @@ Therefore the way of developing the robot software has to be very beginner frien
 So what is the best language for Botball\cite{Botball}?
 The authors do not think there is a best choice.
 Every language has its own advantages and disadvantages.
-C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on. 
-This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right choice. 
+C for example is a very powerful fast and processor-near language so it is quite good for a robot controller doing a lot of basic things such as controlling servos and motors, reading sensor values and so on.
+This is good for students without programming experience which only implement simple algorithms, but for more experienced students with more complex code C is not the right choice.
 While libkovan mostly avoids the real challanges in coding C, when implementing complex algorithms there is no way around pointers and memory management.
 
-Another well-known possibility is Java\cite{Java}. 
+Another well-known possibility is Java\cite{Java}.
 Java\cite{Java} is much easier to learn and also pretty powerful and reliable.
 Of course it is not as fast as compiled languages such as C or C++, but in the most cases it will make no real difference.
 Java\cite{Java} is a higher level language than C which makes it in general easier to implement complex algorithms.
-It provides automatic garbage collection to handle memory management 
+It provides automatic garbage collection to handle memory management
 and offers an excellent set of basic data structures such as lists, queues and maps as well as a huge standard library including easy to use APIs for network programming, multithreading and much more.
 In C everything has to be built from scratch.
-The object-oriented paradigm is also very helpful to structure the program 
+The object-oriented paradigm is also very helpful to structure the program
 to improve the maintainability, especially in bigger projects.
 Moreover Java is compiled into cross platform bytecode instead of target specific machine code, so Java programs do not need to be compile directly on KIPR Link.
 
 In most schools in Austria students get started with programming using Java\cite{Java} and not C or C++.
-Therefore the authors would consider themselves as a good Java\cite{Java} programmer, 
+Therefore the authors would consider themselves as a good Java\cite{Java} programmer,
 but they never wrote a bigger project using C nor C++.
 
-Further alternatives are event-based frameworks using a scripting language 
-such as node\cite{node} or in general scripting languages, but these can be implemented very easily, 
-because the JVM\cite{JVM}(Java\cite{Java} Virtual Machine) supports a huge amount of additional languages 
+Further alternatives are event-based frameworks using a scripting language
+such as node\cite{node} or in general scripting languages, but these can be implemented very easily,
+because the JVM\cite{JVM}(Java\cite{Java} Virtual Machine) supports a huge amount of additional languages
 including javascript, scala and clojure.
 
 \section{State of the Art}
@@ -155,14 +155,14 @@ At that time LinkJVM 1.0\cite{linkjvm1.0} wraps over libkovan's\cite{libkovan} C
 Is approach is in easier to implement, but it also comes with some downsides.
 The most important of them is that there is no possibility to write a thread save library using this approach, because libkovan\cite{libkovan} itself is not thread-save.
 Moreover LinkJVM 1.0\cite{linkjvm1.0} offers only a very small API with much less features that libkovan\cite{libkovan} does and LinkJVM's 1.0\cite{linkjvm1.0} vision system contains also just one camera class.
-Therefor the authors decided to write a new library from scratch, which will fix all this issues. 
+Therefor the authors decided to write a new library from scratch, which will fix all this issues.
 
 \section{Design Approach}
 \label{sec:design-approach}
 The framework of the LinkJVM consists of one high and one low level part.
-The low level part of the LinkJVM wraps the existing C++ library of libkovan\cite{libkovan}, 
+The low level part of the LinkJVM wraps the existing C++ library of libkovan\cite{libkovan},
 the high level now wraps the low level part and represents the API for the user.
-So the user only uses the high level part of the LinkJVM and should not come in 
+So the user only uses the high level part of the LinkJVM and should not come in
 contact with any low level things.
 
 \begin{figure}[H]
@@ -172,22 +172,22 @@ contact with any low level things.
 \label{fig:Class-Diagram}
 \end{figure}
 
-For example the user has a digital sensor like a lever on his robot and now 
-wants to use this sensor in his program. He will now create a new high level 
-DigitalSensor object, which only uses one low level DigitalSensor object in the 
+For example the user has a digital sensor like a lever on his robot and now
+wants to use this sensor in his program. He will now create a new high level
+DigitalSensor object, which only uses one low level DigitalSensor object in the
 background (see Figure \ref{fig:Class-Diagram}) that again uses the C++ implementation of a DigitalSensor.
 
-The user can create as much high level objects of the same sensor, motor, 
-servo,... , which will all uses the same low level object with the specified 
-unique identifier, which is for example the port of a sensor. If the user 
-creates a new high level object with a unique identifier that is unequal to 
-an existing low level object the appropriate factory would 
+The user can create as much high level objects of the same sensor, motor,
+servo,... , which will all uses the same low level object with the specified
+unique identifier, which is for example the port of a sensor. If the user
+creates a new high level object with a unique identifier that is unequal to
+an existing low level object the appropriate factory would
 create a new low level object with the specified unique identifier. (see figure \ref{fig:Object-Diagram})
 
 Both the low and the high level parts are described in detail in the following subsections:
 
 \subsection{Low Level}
-The low level part of the framework contains the Java\cite{Java} side libkovan\cite{libkovan} wrapper. 
+The low level part of the framework contains the Java\cite{Java} side libkovan\cite{libkovan} wrapper.
 Every object of a low level class is also a native C++ object.
 This classes must be instantiated using the corresponding multiton factory, which means that every low object has a unique identifier as described in section \nameref{sec:design-approach}.
 The low level part also provides the JNIController class which holds a singleton of every factory as well as one static singleton object of itself.
@@ -195,7 +195,7 @@ Most low level parts are automatically generated wrapper classes using the Simpl
 This software generates the Java\cite{Java} and the C++ wrapper out of an interface file with all class definition that should be wrapped.
 
 \subsection{High Level}
-The high level part contains, as already mentioned before, the object oriented API for the user. 
+The high level part contains, as already mentioned before, the object oriented API for the user.
 Internally every time the user creates a new high level object, the high object requests a new low object.
 (See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}).
 
@@ -215,7 +215,7 @@ The API contains classes for the following components:
 The most important components of the framework are described in detail in the following subsections.
 
 \subsection{Botball Class}
-The Botball\cite{Botball} Class contains some basically static methods like shutDownIn, 
+The Botball\cite{Botball} Class contains some basically static methods like shutDownIn,
 waitForLight or msleep.
 The next listing shows the usage of these methods:
 \lstinputlisting[caption={Usage of the Botball class}, language=Java]{listings/botball_class.java}
@@ -224,23 +224,23 @@ The next listing shows the usage of these methods:
 LinkJVM's robot libary provides classes for the different types or motors, servos and sensors.
 The following listing shows the usage of motors and sensors:
 \lstinputlisting[caption={Basic usage of sensors and motors}, language=Java]{listings/drive_until_bump.java}
-The example above shows a very simple program, which lets the robot drive forward 
+The example above shows a very simple program, which lets the robot drive forward
 until a digital sensor which is used as bump sensor bumps.
 
 \subsection{Create}
-The iRobot Create\cite{create} is a very good example to show the advantage of the usage of 
+The iRobot Create\cite{create} is a very good example to show the advantage of the usage of
 an object oriented programming language like Java\cite{Java}.
 The following example shows the usage of the iRobot Create\cite{create}:
 \lstinputlisting[caption={Usage of the iRobot Create with LinkJVM}, language=Java]{listings/create_roomtour.java}
 With this code it is possible to do a room tour with the iRobot Create\cite{create}.
-After the start button was pressed the Create\cite{create} starts moving until it bumps, then 
-it turns and moves on in another direction. The program runs until the side 
+After the start button was pressed the Create\cite{create} starts moving until it bumps, then
+it turns and moves on in another direction. The program runs until the side
 button on the KIPR\cite{KIPR} Link\cite{link} is pressed.
 
 \subsection{Vision System}
 The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
 \begin{itemize}
-	\item {\bf ImageProcessor}: The ImageProcessor processes the image to color or QR blobs with a given CameraConfig and a given channel number and proviedes afterwards the CameraObjects. 
+	\item {\bf ImageProcessor}: The ImageProcessor processes the image to color or QR blobs with a given CameraConfig and a given channel number and proviedes afterwards the CameraObjects.
 	\item {\bf CameraObject}: One CameraObject represents an object tracked by an image processor. It contains information like the bounding box or the center point about the blob.
 	\item {\bf CameraConfig}: An CameraConfig object contains several configuration attributes for an ImageProcessor.
 \end{itemize}
@@ -281,12 +281,12 @@ Using bitbake LinkJVM is compiled and packaged into a ipk software package which
 It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link\cite{link} firmware.
 \section{Developing Tools}
 \label{sec:developing-tools}
-Because the code the user writes with the LinkJVM library uses the programming 
-language Java\cite{Java}, it is not possible to use the KISS IDE from KIPR\cite{KIPR} because it only 
+Because the code the user writes with the LinkJVM library uses the programming
+language Java\cite{Java}, it is not possible to use the KISS IDE from KIPR\cite{KIPR} because it only
 supports C or C++ code.
 
-The authors decided to leave the choice of how to write the code at the user. It 
-is possible to write the code with an IDE like Eclipse or Netbeans or just write 
+The authors decided to leave the choice of how to write the code at the user. It
+is possible to write the code with an IDE like Eclipse or Netbeans or just write
 it in a simple text editor and compile the source code over the console.
 
 \begin{figure}[H]
@@ -297,38 +297,38 @@ it in a simple text editor and compile the source code over the console.
 \end{figure}
 
 At the beginning it was only possible to upload/run the user's program via scp/ssh to/on the KIPR\cite{KIPR} Link\cite{link}.
-Running a program over ssh is not tournament-conformal, so the only thing that could be done 
+Running a program over ssh is not tournament-conformal, so the only thing that could be done
 was to write a C wrapper, which executes your Java\cite{Java} program.
 
-So the next logical thing the authors have to think about is how to get the compiled 
+So the next logical thing the authors have to think about is how to get the compiled
 program on the KIPR\cite{KIPR} Link\cite{link} and make it run able there in a for the user easy way?
-They first thought about a plugin for the Eclipse IDE but this would extremely 
-limit the user of how to write the code, which like already mentioned the 
+They first thought about a plugin for the Eclipse IDE but this would extremely
+limit the user of how to write the code, which like already mentioned the
 authors wanted to leave the choice at the user.
-The authors decided to write an independent program, which is called 
-LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}), 
-to upload .jar files to the Link\cite{link}. This program also automatically creates C 
-wrappers, which executes the .jar files and which are shown in the menu point 
-\frqq Programs\flqq  on the KIPR\cite{KIPR} Link\cite{link}. All this is done over ssh and scp connections in 
+The authors decided to write an independent program, which is called
+LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}),
+to upload .jar files to the Link\cite{link}. This program also automatically creates C
+wrappers, which executes the .jar files and which are shown in the menu point
+\frqq Programs\flqq  on the KIPR\cite{KIPR} Link\cite{link}. All this is done over ssh and scp connections in
 the background.
 
 \section{Conclusion}
 LinkJVM 2.0 comes with a completely new robot library which fixes many problems of LinkJVM 1.0\cite{linkjvm1.0}.
-Now the user does not have care of the thread safety and the vision system provides an excellent API for using the KIPR\cite{KIPR} Link's\cite{link} camera. 
+Now the user does not have care of the thread safety and the vision system provides an excellent API for using the KIPR\cite{KIPR} Link's\cite{link} camera.
 Since LinkJVM has also been integrated into the KIPR\cite{KIPR} Link's\cite{link} build it is incredibly easy to install and upgrade which makes it pretty attractive for Botball students.
 Although the design approach shown in this paper works very good, it is still not perfect,
-especially because developing on the core of LinkJVM requires advanced knowledge 
+especially because developing on the core of LinkJVM requires advanced knowledge
 of the Java\cite{Java} Native Interface(JNI), which makes it pretty hard for students to fix bugs on their own.
 Moreover since there are very few people with a build server compiling LinkJVM is nearly impossible.
 
 So the next logical step would be to make LinkJVM's robot library a pure Java\cite{Java} library and replace the low level part with real implementation.
-This could be archived pretty easy, because the most parts of libkovan\cite{libkovan} does nothing else than communicates with the kovan kmod via UDP. 
+This could be archived pretty easy, because the most parts of libkovan\cite{libkovan} does nothing else than communicates with the kovan kmod via UDP.
 The kovan kmod is a kernel module which provides an interface to KIPR\cite{KIPR} Link's\cite{link} FPGA.
-Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode. 
+Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode.
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 \bibitem{Botball}
-  Botball, Standards-Based Educational Robotics Program, 
+  Botball, Standards-Based Educational Robotics Program,
   http://www.botball.org, 2014
 \bibitem{Java}
   Java, Oracle,
@@ -344,13 +344,13 @@ Using this approach, LinkJVM could also be built without an build server, becaus
   KISS Institute for Practical Robotics,
   http://www.kipr.org, 2014
 \bibitem{node}
-  Node Javascript, 
+  Node Javascript,
   http://nodejs.org/, March 2014
 \bibitem{JVM}
   JVM, Java Virtual Machine,
   http://en.wikipedia.org/wiki/Java\_virtual\_machine, March 2014
 \bibitem{JRE}
-  JRE, Java Runtime Environment, 
+  JRE, Java Runtime Environment,
   http://www.oracle.com/technetwork/java/javase/
   downloads/, March 2014
 \bibitem{GCER}
