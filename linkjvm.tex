@@ -27,6 +27,7 @@
 
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{url}
 
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
@@ -137,7 +138,7 @@ and offers an excellent set of basic data structures such as lists, queues and m
 In C everything has to be built from scratch.
 The object-oriented paradigm is also very helpful to structure the program
 to improve the maintainability, especially in bigger projects.
-Moreover Java is compiled into cross platform bytecode instead of target specific machine code, so Java programs do not need to be compile directly on KIPR Link.
+Moreover Java is compiled into cross platform bytecode instead of target specific machine code, so Java programs do not need to be compile directly on the Kiss Institute of Practical Robotics\cite{KIPR} (KIPR) Link\cite{link}.
 
 In most schools in Austria students get started with programming using Java and not C or C++.
 Therefore the authors would consider themselves as a good Java programmer,
@@ -145,12 +146,12 @@ but they never wrote a bigger project using C nor C++.
 
 Further alternatives are event-based frameworks using a scripting language
 such as node.js\cite{node} or in general scripting languages, but these can be implemented very easily,
-because the JVM\cite{JVM}(Java Virtual Machine) supports a huge amount of additional languages
+because the Java Virtual Machine JVM\cite{JVM}(JVM) supports a huge amount of additional languages
 including javascript, scala and clojure.
 
 \section{State of the Art}
-LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013 (GCER\cite{GCER} 2013).
-While the Java environment JamVM and GNU Classpath\cite{GNU} works pretty well the robot library is not that good.
+LinkJVM 1.0\cite{linkjvm1.0} was published at the Global Conference on Educational Robotics 2013\cite{GCER} (GCER 2013).
+While the Java environment JamVM\cite{JamVM} and GNU Classpath\cite{GNU} works pretty well the robot library is not that good.
 At that time LinkJVM 1.0 wraps over libkovan's\cite{libkovan} C bindings which makes the libary structure pretty poor, because LinkJVM 1.0 first calls the native C function and then the native C function manages the C++ objects.
 Though this approach is easier to implement, but it also comes with some downsides.
 The most important of them is that there is no possibility to write a thread safe library using this approach, because libkovan itself is not thread-safe.
@@ -200,8 +201,7 @@ Internally every time the user creates a new high level object, the high level o
 (See figure \ref{fig:Class-Diagram} and figure \ref{fig:Object-Diagram}).
 
 \section{LinkJVM - API}
-The API of LinkJVM (or the robot library) provides a object oriented, well documented and easy to use and maintainable library for controlling the KIPR\cite{KIPR} Link\cite{link}
- and all its connected devices.
+The API of LinkJVM (or the robot library) provides a object oriented, well documented and easy to use and maintainable library for controlling the KIPR Link and all its connected devices.
 The API contains classes for the following components:
 \begin{itemize}
 	\item iRobot Create\cite{create}
@@ -228,14 +228,14 @@ The example above shows a very simple program, which lets the robot drive forwar
 until a digital sensor which is used as bump sensor bumps.
 
 \subsection{Create}
-The iRobot Create\cite{create} is a very good example to show the advantage of the usage of
-an object oriented programming language like Java\cite{Java}.
-The following example shows the usage of the iRobot Create\cite{create}:
+The iRobot Createis a very good example to show the advantage of the usage of
+an object oriented programming language like Java.
+The following example shows the usage of the iRobot Create:
 \lstinputlisting[caption={Usage of the iRobot Create with LinkJVM}, language=Java]{listings/create_roomtour.java}
-With this code it is possible to do a room tour with the iRobot Create\cite{create}.
-After the start button was pressed the Create\cite{create} starts moving until it bumps, then
+With this code it is possible to do a room tour with the iRobot Create.
+After the start button was pressed the Create starts moving until it bumps, then
 it turns and moves on in another direction. The program runs until the side
-button on the KIPR\cite{KIPR} Link\cite{link} is pressed.
+button on the KIPR Link is pressed.
 
 \subsection{Vision System}
 The LinkJVM's vision system consists basically of 3 major classes(see figure \ref{fig:Vision-System}):
@@ -258,31 +258,31 @@ Therefore the API provides a debugger class which connects establishes a connect
 \lstinputlisting[language=Java, caption={Example usage of the LinkJVM-Debugger}]{listings/Debugger.java}
 
 \section{Java Environment}
-LinkJVM includes a Java\cite{Java} Runtime Environment(JRE\cite{JRE}) which consists of a lightweight Java\cite{Java} Virtual Machine(JVM\cite{JVM}) and GNU Classpath\cite{GNU} an open source implementation of the Java\cite{Java} core classes.
-So LinkJVM 2.0 uses basically the same Java\cite{Java} environment than LinkJVM 1.0\cite{linkjvm1.0} does, but in addition LinkJVM 2.0 offers the \frqq eclipse Java\cite{Java} compiler\flqq  as Java compiler (javac) and the \frqq jar\flqq  for packaging multiple class files.
-Using these tools Java\cite{Java} programs can be directly compiled and packaged on the KIPR Link, but since class and jar files contain cross platform bytecode, it is not necessary to compile the programs on the KIPR Link. (See section \nameref{sec:developing-tools})
+LinkJVM includes a Java Runtime Environment\cite{JRE} (JRE) which consists of a lightweight Java Virtual Machine(JVM) and GNU Classpath an open source implementation of the Java core classes.
+So LinkJVM 2.0 uses basically the same Java environment than LinkJVM 1.0 does, but in addition LinkJVM 2.0 offers the \frqq Eclipse Java compiler\flqq  as Java compiler (javac) and the \frqq jar\flqq  for packaging multiple class files.
+Using these tools Java programs can be directly compiled and packaged on the KIPR Link, but since class and jar files contain cross platform bytecode, it is not necessary to compile the programs on the KIPR Link. (See section \nameref{sec:developing-tools})
 
 \section{Integration into KIPR Link's build system}
-The KIPR\cite{KIPR} Link\cite{link} is based on a build framework called \frqq OpenEmbedded\flqq\cite{openembedded} and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux\cite{Look_Inside_Kipr_Link}.
-Unfortunately the KIPR\cite{KIPR} Link\cite{link} does not work with the latest version of these tools, so building the firmware or adding packages is very hard.
-Furthermore OpenEmbedded\cite{openembedded} only works on Linux machines and also requires knowledge of basic and moderately complex terminal commands.
+The KIPR Link is based on a build framework called OpenEmbedded \cite{openembedded} and its accociated build system \frqq bitbake\flqq  which provides a cross compile environment for embedded Linux\cite{Look_Inside_Kipr_Link}.
+Unfortunately the KIPR Link does not work with the latest version of these tools, so building the firmware or adding packages is very hard.
+Furthermore OpenEmbedded only works on Linux machines and also requires knowledge of basic and moderately complex terminal commands.
 Fortunately with the excellent help of KIPR staff, the authors managed to set up a build server and compile a LinkJVM package.
 
 \subsection{LinkJVM's build system}
-As already mentioned before LinkJVM's source consists of a C++ and a Java\cite{Java} part.
-To combine both build processes using only one build system the authors decided to use CMake for compilation.
-CMake is an open source, cross platform build system which supports C++ as well as Java\cite{Java} and automatically generates makefiles.
+As already mentioned before LinkJVM's source consists of a C++ and a Java part.
+To combine both build processes using only one build system the authors decided to use CMake\cite{cmake} for compilation.
+CMake is an open source, cross platform build system which supports C++ as well as Java and automatically generates makefiles.
 
-For integration into KIPR\cite{KIPR} Link's\cite{link} build system the authors added an meta-layer which provides a bitbake recipes for building LinkJVM.
+For integration into KIPR Link's build system the authors added an meta-layer which provides a bitbake recipes for building LinkJVM.
 
 \subsubsection{Deployment}
-Using bitbake LinkJVM is compiled and packaged into a ipk software package which can be easily installed on the Link\cite{link} directly via BotUI.
+Using bitbake LinkJVM is compiled and packaged into a ipk software package which can be easily installed on the Link directly via BotUI.
 
-It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link\cite{link} firmware.
+It is also possible to directly add LinkJVM to a firmware image and in the future LinkJVM may also be integrated into the offical Link firmware.
 \section{Developing Tools}
 \label{sec:developing-tools}
 Because the code the user writes with the LinkJVM library uses the programming
-language Java\cite{Java}, it is not possible to use the KISS IDE from KIPR\cite{KIPR} because it only
+language Java, it is not possible to use the KISS IDE from KIPR because it only
 supports C or C++ code.
 
 The authors decided to leave the choice of how to write the code at the user. It
@@ -298,86 +298,70 @@ it in a simple text editor and compile the source code over the console.
 
 At the beginning it was only possible to upload/run the user's program via scp/ssh to/on the KIPR\cite{KIPR} Link\cite{link}.
 Running a program over ssh is not tournament-conformal, so the only thing that could be done
-was to write a C wrapper, which executes your Java\cite{Java} program.
+was to write a C wrapper, which executes your Java program.
 
 So the next logical thing the authors have to think about is how to get the compiled
-program on the KIPR\cite{KIPR} Link\cite{link} and make it run able there in a for the user easy way?
+program on the KIPR Link and make it run able there in a for the user easy way?
 They first thought about a plugin for the Eclipse IDE but this would extremely
 limit the user of how to write the code, which like already mentioned the
 authors wanted to leave the choice at the user.
 The authors decided to write an independent program, which is called
 LinkJVM-Uploader or JARtoLinkUploader (see Figure \ref{fig:linkjvm_uploader}),
-to upload .jar files to the Link\cite{link}. This program also automatically creates C
+to upload .jar files to the Link. This program also automatically creates C
 wrappers, which executes the .jar files and which are shown in the menu point
-\frqq Programs\flqq  on the KIPR\cite{KIPR} Link\cite{link}. All this is done over ssh and scp connections in
+\frqq Programs\flqq  on the KIPR Link. All this is done over ssh and scp connections in
 the background.
 
 \section{Conclusion}
 LinkJVM 2.0 comes with a completely new robot library which fixes many problems of LinkJVM 1.0\cite{linkjvm1.0}.
 Now the user does not have care of the thread safety and the vision system provides an excellent API for using the KIPR\cite{KIPR} Link's\cite{link} camera.
-Since LinkJVM has also been integrated into the KIPR\cite{KIPR} Link's\cite{link} build it is incredibly easy to install and upgrade which makes it pretty attractive for Botball students.
+Since LinkJVM has also been integrated into the KIPR Link's build it is incredibly easy to install and upgrade which makes it pretty attractive for Botball students.
 Although the design approach shown in this paper works very good, it is still not perfect,
 especially because developing on the core of LinkJVM requires advanced knowledge
-of the Java\cite{Java} Native Interface(JNI), which makes it pretty hard for students to fix bugs on their own.
+of the Java Native Interface(JNI), which makes it pretty hard for students to fix bugs on their own.
 Moreover since there are very few people with a build server compiling LinkJVM is nearly impossible.
 
-So the next logical step would be to make LinkJVM's robot library a pure Java\cite{Java} library and replace the low level part with real implementation.
-This could be archieved pretty easy, because the most parts of libkovan\cite{libkovan} does nothing else than communicates with the kovan kmod via UDP.
-The kovan kmod is a kernel module which provides an interface to KIPR\cite{KIPR} Link's\cite{link} FPGA.
+So the next logical step would be to make LinkJVM's robot library a pure Java library and replace the low level part with real implementation.
+This could be archieved pretty easy, because the most parts of libkovan does nothing else than communicates with the kovan kmod via UDP.
+The kovan kmod is a kernel module which provides an interface to KIPR Link's Field Programable Gate Array (FPGA).
 Using this approach, LinkJVM could also be built without an build server, because it would only consist cross platform bytecode.
 
 \begin{thebibliography}{500} % Include .bib (.bbl) references here
 \bibitem{Botball}
-  Botball, Standards-Based Educational Robotics Program,
-  http://www.botball.org, 2014
+  Botball, Standards-Based Educational Robotics Program, \url{http://www.botball.org}, 2014
 \bibitem{Java}
-  Java, Oracle,
-  http://www.java.com/en/, March 2014
-\bibitem{linkjvm1.0}
-  Klein Markus: \frqq Java on the KIPR Link\flqq  ,
-  http://files.kipr.org/gcer/2013/proceedings/
-  Klein\_Java\_KIPR\_Link.pdf, 2013
-\bibitem{libkovan}
-  McDorman B.: libkovan C standard library,
-  https://github.com/kipr/libkovan, March 2014
+  Java, Oracle, \url{http://www.java.com/en/}, March 2014
 \bibitem{KIPR}
-  KISS Institute for Practical Robotics,
-  http://www.kipr.org, 2014
+  KISS Institute for Practical Robotics, \url{http://www.kipr.org}, 2014
+\bibitem{link} Link, Robot Controler, \url{http://www.kipr.org/products/link}, March 2014
 \bibitem{node}
-  Node Javascript,
-  http://nodejs.org/, March 2014
+  Node Javascript, \url{http://nodejs.org/}, March 2014
 \bibitem{JVM}
-  JVM, Java Virtual Machine,
-  http://en.wikipedia.org/wiki/Java\_virtual\_machine, March 2014
-\bibitem{JRE}
-  JRE, Java Runtime Environment,
-  http://www.oracle.com/technetwork/java/javase/
-  downloads/, March 2014
+  JVM, Java Virtual Machine, \url{http://en.wikipedia.org/wiki/Java\_virtual\_machine/}, March 2014
+\bibitem{linkjvm1.0}
+  Klein Markus: \frqq Java on the KIPR Link\flqq, \url{http://files.kipr.org/gcer/2013/proceedings/Klein\_Java\_KIPR\_Link.pdf}, 2013
 \bibitem{GCER}
-  GCER, Global Conference on Educational Robotics,
-  http://www.kipr.org/gcer, 2014
+  GCER, Global Conference on Educational Robotics, \url{http://www.kipr.org/gcer}, 2014
+\bibitem{JamVM}
+  JamVM, \url{http://jamvm.sourceforge.net/}, 2010.
 \bibitem{GNU}
-  GNU Classpath, open source Java core class implementation,
-  http://www.gnu.org/software/classpath/, March 2014
-\bibitem{Look_Inside_Kipr_Link}
-  Braden McDorman, Joshua Southerland: \frqq A Look Inside the KIPR Link\flqq  ,
-  http://files.kipr.org/gcer/2013/proceedings/
-  McDorman\_A\_Look\_Inside\_the\_KIPR\_Link.pdf, 2013
-\bibitem{create}
-  iRobot Create, Programable Robot,
-  http://www.irobot.com/us/learn/Educators/Create.aspx, March 2014
-\bibitem{ar.drone}
-  AR.Drone, Parrot,
-  http://ardrone2.parrot.com, March 2014
-\bibitem{link}
-  Link, Robot Controler,
-  http://www.kipr.org/products/link, March 2014
-\bibitem{openembedded}
-  OpenEmbedded, build framework for embedded Linux,
-  http://www.openembedded.org/wiki/Main\_Page, March 2014
+  GNU Classpath, open source Java core class implementation, \url{http://www.gnu.org/software/classpath/}, March 2014
+\bibitem{libkovan}
+  McDorman B.: libkovan C standard library, \url{https://github.com/kipr/libkovan}, March 2014
 \bibitem{SWIG}
-  SWIG, Simplified Wrapper and Interface Generator,
-  http://www.swig.org, March 2014
+  SWIG, Simplified Wrapper and Interface Generator, \url{http://www.swig.org}, March 2014
+\bibitem{create}
+  iRobot Create, Programable Robot, \url{http://www.irobot.com/us/learn/Educators/Create.aspx}, March 2014
+\bibitem{ar.drone}
+  AR.Drone, Parrot, \url{http://ardrone2.parrot.com}, March 2014
+\bibitem{JRE}
+  JRE, Java Runtime Environment, \url{http://www.oracle.com/technetwork/java/javase/downloads/}, March 2014
+\bibitem{openembedded}
+  OpenEmbedded, build framework for embedded Linux, \url{http://www.openembedded.org/wiki/Main\_Page}, March 2014
+\bibitem{Look_Inside_Kipr_Link}
+  Braden McDorman, Joshua Southerland: \frqq A Look Inside the KIPR Link\flqq, \url{http://files.kipr.org/gcer/2013/proceedings/McDorman\_A\_Look\_Inside\_the\_KIPR\_Link.pdf}, 2013
+\bibitem{cmake}
+  Cross Make, cross-platform, open-source build system, \url{http://cmake.org/}
 \end{thebibliography}
 
 \end{document}
